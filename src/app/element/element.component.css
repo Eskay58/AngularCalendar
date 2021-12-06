@@ -1,0 +1,8 @@
+.element {
+  /* text-align: center; */
+  width: 1px;
+  /* margin: 0 auto; */
+  display: inline-block;
+  text-align: left;
+  padding-right: 10px;
+}
