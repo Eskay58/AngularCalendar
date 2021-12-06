@@ -1,1 +1,5 @@
-  <div class="element">{{day.date}}</div>
+  <div 
+  class="element"
+  [class.today]="isToday"
+  (click)="onDate()"
+  >{{day.date}}</div>

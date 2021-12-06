@@ -1,8 +1,26 @@
 .element {
-  /* text-align: center; */
-  width: 1px;
-  /* margin: 0 auto; */
   display: inline-block;
-  text-align: left;
-  padding-right: 10px;
+  line-height: 24px;
+  width: 24px;
+  /* background-color: #1a73e8; */
+  color: black;
+  border-radius: 50%;
+  cursor: pointer;
 }
+
+.today {
+  background-color: #1a73e8;
+  color: #fff;
+}
+
+/* .another {
+
+} */
+
+/* .saturday {
+
+} */
+
+/* .sunday {
+  
+} */

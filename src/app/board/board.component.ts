@@ -13,16 +13,24 @@ export class BoardComponent implements OnInit {
   calendars: date[][]
 
   constructor(
-    calendarService: CalendarService,
+    private calendarService: CalendarService,
   ) { 
-    this.calendars = calendarService.createCalendar();
-    this.currentDate = `${calendarService.currentDate.get('month')}`;
+    this.calendars = calendarService.getCalendar();
+    this.currentDate = calendarService.currentDate.format();
   }
 
   ngOnInit(): void {
-    
-    
   }
 
+  onNext() {
+    this.calendarService.nextMonth();
+    this.calendars = this.calendarService.getCalendar();
+    this.currentDate = this.calendarService.currentDate.format();
+  }
+  onReturn() {
+    this.calendarService.returnMonth();
+    this.calendars = this.calendarService.getCalendar();
+    this.currentDate = this.calendarService.currentDate.format();
+  }
 
 }

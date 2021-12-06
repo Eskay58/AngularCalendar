@@ -1,15 +1,13 @@
 <p>{{currentDate}}</p>
-<button><</button>
-<button>></button>
+<button (click)="onReturn()"><</button>
+<button (click)="onNext()">></button>
 
 <div class="board">
-  
-  <div class="youbi-container" >
+  <div class="youbi-container">
     <div *ngFor="let y of youbi" class="youbi">{{y}}</div>
   </div>
   <div *ngFor="let week of calendars">
     <app-week [week]="week"></app-week>
   </div>
-  
   
 </div>

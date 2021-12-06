@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import  * as moment from 'moment';
 
-export interface date {date: number}
+export interface date {
+  date: number,
+  moment: moment.Moment
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ export interface date {date: number}
 export class CalendarService {
   currentDate = moment();
 
-  createCalendar(): date[][] {
+  getCalendar(): date[][] {
     // this.date.add(1, 'month');
     let startDate: moment.Moment = moment(this.currentDate).startOf('month');
     let startIndex: number = startDate.day();
@@ -21,11 +24,11 @@ export class CalendarService {
     for(let week = 0; week < weekCount; week++) {
       let weekRow: date[] = [];
       for(let day = 0; day < 7; day++) {
-        weekRow.push({date: startDate.get('date')});
+        // weekRow.push({date: startDate.get('date')});
+        weekRow.push({date: startDate.get('date'), moment: moment(startDate)});
         startDate.add(1 ,'days')
       }
       calendars.push(weekRow);
-      
       weekRow = [];
       
     }
@@ -35,12 +38,9 @@ export class CalendarService {
 
   nextMonth() {
     this.currentDate.add(1, 'month');
-    this.createCalendar();
   }
-
 
   returnMonth() {
     this.currentDate.subtract(1, 'month');
-    this.createCalendar();
   }
 }
