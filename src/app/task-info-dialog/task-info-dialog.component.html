@@ -1,0 +1,20 @@
+  <div class="icon-button">
+    <div class="title">
+      <h1>{{data.title}}</h1>
+    </div>
+    <button style="color: gray;" mat-icon-button (click)="onDelete(data)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+<div class="container">
+  <mat-icon class="item">calendar_today</mat-icon>
+  <div>{{data.date.format('YYYY/MM/DD')}}</div>
+</div>
+<div class="container">
+  <mat-icon class="item">place</mat-icon>
+  <div>{{data.location}}</div>
+</div>
+<div class="container">
+  <mat-icon class="item">subject</mat-icon>
+  <div>{{data.description}}</div>
+</div>

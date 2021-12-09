@@ -8,29 +8,18 @@ import { CalendarService, date } from '../service/calendar.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  currentDate: string;
-  youbi: string[] = ['日','月','火','水','木','金','土'];
-  calendars: date[][]
+  youbi: string[] = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
 
   constructor(
-    private calendarService: CalendarService,
+    public calendarService: CalendarService,
   ) { 
-    this.calendars = calendarService.getCalendar();
-    this.currentDate = calendarService.currentDate.format();
   }
 
   ngOnInit(): void {
   }
 
-  onNext() {
-    this.calendarService.nextMonth();
-    this.calendars = this.calendarService.getCalendar();
-    this.currentDate = this.calendarService.currentDate.format();
-  }
-  onReturn() {
-    this.calendarService.returnMonth();
-    this.calendars = this.calendarService.getCalendar();
-    this.currentDate = this.calendarService.currentDate.format();
+  onScroll() {
+    console.log('scroll');
   }
 
 }

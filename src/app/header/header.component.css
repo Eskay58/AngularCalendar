@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.change-icon {
+  margin: 0 10px 0px 50px;
+
+}
+
+.change-button {
+  font-size: 120%;
+}
+
+.left-icon {
+  padding-bottom: 10px;
+  text-align: center;
+}

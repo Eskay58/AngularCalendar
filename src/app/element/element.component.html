@@ -1,5 +1,12 @@
+<div>
   <div 
   class="element"
   [class.today]="isToday"
+  [class.notThisMonth]="isNotThisMonth"
   (click)="onDate()"
   >{{day.date}}</div>
+
+  <div class="task" *ngFor="let t of dateTaskList" (click)="onTask(t)">
+    {{t.title}}
+  </div>
+</div>

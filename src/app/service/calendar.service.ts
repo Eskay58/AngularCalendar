@@ -3,7 +3,12 @@ import  * as moment from 'moment';
 
 export interface date {
   date: number,
-  moment: moment.Moment
+  moment: moment.Moment,
+  task?: Task[]
+}
+
+export interface Task {
+  title: string,
 }
 
 @Injectable({
@@ -11,9 +16,14 @@ export interface date {
 })
 export class CalendarService {
   currentDate = moment();
+  currentDateStr = this.currentDate.format("MMMM YYYY");
+  calendars!: date[][];
 
-  getCalendar(): date[][] {
-    // this.date.add(1, 'month');
+  constructor() {
+    this.setCalendar();
+  }
+
+  setCalendar() {
     let startDate: moment.Moment = moment(this.currentDate).startOf('month');
     let startIndex: number = startDate.day();
     let endIndex: number = moment(this.currentDate).endOf('month').date();
@@ -24,16 +34,18 @@ export class CalendarService {
     for(let week = 0; week < weekCount; week++) {
       let weekRow: date[] = [];
       for(let day = 0; day < 7; day++) {
-        // weekRow.push({date: startDate.get('date')});
         weekRow.push({date: startDate.get('date'), moment: moment(startDate)});
         startDate.add(1 ,'days')
       }
       calendars.push(weekRow);
       weekRow = [];
-      
     }
     console.log(calendars);
-    return calendars;
+    this.calendars = calendars;
+  }
+
+  setCurrentDate() {
+    this.currentDateStr = this.currentDate.format("MMMM YYYY");
   }
 
   nextMonth() {
@@ -43,4 +55,5 @@ export class CalendarService {
   returnMonth() {
     this.currentDate.subtract(1, 'month');
   }
+
 }
